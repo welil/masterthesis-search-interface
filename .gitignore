@@ -2,7 +2,7 @@
 venv/
 venv3/
 .idea/
-
-static/.webassets-cache/
-static/webassets-external/
+__pycache__
+frontend/static/.webassets-cache/
+frontend/static/webassets-external/
 

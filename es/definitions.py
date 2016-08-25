@@ -1,24 +1,21 @@
+ES_INDEX = 'links'
+
 SEARCH_RESULTS_PER_PAGE = 20
+
 
 def define_facets():
     facets = [
         'Brand.raw',
-        #'CampaignName.raw',
         'Topic.raw',
         'Subtopic.raw',
         'MediaSpendings.raw',
         'PlacementType.raw',
-        # 'PlacementName.raw',
         'TargetGroup.raw',
         'SubTargetGroup.raw',
-        #'TargetURL.raw',
         'AdFormat.raw',
-        #'AdGroup.raw',
-        #'AdSpecification.raw',
         'ContentFormat.raw',
         'ContentSpec.raw',
         'PaymentType.raw',
-        #'Description.raw',
         'Market.raw'
     ]
     return facets
@@ -45,6 +42,7 @@ def define_searched_fields():
     ]
     return searched_fields
 
+
 completion_fields = [
     'UniqueLinkId.suggest',
     'Brand.suggest',
@@ -53,10 +51,8 @@ completion_fields = [
     'Subtopic.suggest',
     'MediaSpendings.suggest',
     'TargetURL.suggest',
-#    'PlacementType.suggest',
     'PlacementName.suggest',
     'AdFormat.suggest',
-#    'AdSpecification.suggest',
     'PaymentType.suggest',
     'Description.suggest'
 ]

@@ -29,7 +29,6 @@ $(document).ready(function () {
         return filters;
     };
 
-    // submit search
     var submit_search = function () {
         var filters = get_search_params();
 
@@ -65,7 +64,6 @@ $(document).ready(function () {
     // reset the checked filters and the date values
     var reset_filters = function () {
         $('.es_filter:checkbox').removeAttr('checked');
-        // $('#created_on_start').val($.now().toString("dd.MM.yyyy"));
         var today = new Date();
         var end_date = ('0' + today.getDate()).slice(-2) + '.' + ('0' + (today.getMonth()+1)).slice(-2) + '.' + today.getFullYear();
         var start_date = ('0' + today.getDate()).slice(-2) + '.' + ('0' + (today.getMonth()-2)).slice(-2) + '.' + (today.getFullYear());
@@ -234,7 +232,7 @@ $(document).ready(function () {
         submit_search();
     });
 
-    // click in a suggestion on the no results page
+    // click on a suggestion on the no results page
     $(document).on('click', '.suggestion', function() {
         var search_query = $(this).text();
         $('#search_query').val(search_query);

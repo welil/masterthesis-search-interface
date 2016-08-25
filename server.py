@@ -4,7 +4,7 @@ from dateutil.relativedelta import relativedelta
 from flask import render_template, request
 from elasticsearch_dsl import Search
 
-from ..frontend import app
+from frontend import app
 from es import es_instance
 from es.definitions import define_facets, define_searched_fields, SEARCH_RESULTS_PER_PAGE, ES_INDEX
 from es.utils import get_completions, get_suggestions, get_results, filter_on_date, filter_on_clicked_checkboxes, \
@@ -70,12 +70,10 @@ def reload_results_filters():
     sort_type = filters['sort']['sort_type']
     search_query = filters['search_query']
 
-    # search for input term
     s = Search(using=es_instance, index=ES_INDEX)
 
     s = filter_on_date(s, created_on_start, created_on_end)
 
-    # search for checkbox facet filter
     for f in filters['checkbox']:
         filter_name = f
         filter_value = filters['checkbox'][f]
@@ -122,4 +120,4 @@ def autocomplete(search_query=None):
 
 
 if __name__ == '__main__':
-    app.run(debug=False, host='0.0.0.0')
+    app.run(debug=False, host='127.0.0.1')

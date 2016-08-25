@@ -1,25 +1,21 @@
 import requests
 import json
 
-from elasticsearch_dsl import Search, Q, field
+from elasticsearch_dsl import Q
 
-from es import es_instance
 from es.definitions import completion_fields, SEARCH_RESULTS_PER_PAGE
 
 
 def get_results(search_object, searched_fields, value):
     search_query = value
 
-    # search for searchquery in all link-fields
     if not search_query:
         q = Q(query=None)
     else:
         q = Q("multi_match", query=search_query, fields=searched_fields, operator='and')
 
     search_object = search_object.query(q)[0:SEARCH_RESULTS_PER_PAGE]
-    #search_object = Search(using=es_instance, index="links").query(q)[0:SEARCH_RESULTS_PER_PAGE]
 
-    # highlight searchquery
     if search_query:
         for searched_field in searched_fields:
             search_object = search_object.highlight(searched_field)
