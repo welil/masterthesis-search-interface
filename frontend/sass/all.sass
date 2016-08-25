@@ -1,0 +1,377 @@
+// colors
+$dark-grey: rgb(60, 65, 70)
+$medium-grey: rgb(120, 120, 125)
+$light-grey: rgb(155, 160, 160)
+$lighter-grey: rgba(155, 160, 160, 0.5)
+$lightest-grey: rgba(155, 160, 160, 0.1)
+
+$dark-green: rgb(0, 180, 95)
+$medium-green: rgb(75, 200, 145)
+$light-green: rgb(125, 215, 175)
+$lightest-green: rgba(125, 215, 175, 0.2)
+
+$dark-blue: rgb(65, 160, 230)
+$medium-blue: rgb(120, 190, 235)
+$light-blue: rgb(160, 205, 240)
+
+// paddings
+$big-padding: 40px
+$medium-padding: 20px
+$small-padding: 10px
+$tiny-padding: 5px
+
+// margins
+$big-margin: 40px
+$medium-margin: 20px
+$small-margin: 10px
+$tiny-margin: 5px
+
+// fonts
+@font-face
+  font-family: 'helvetica_regular'
+  src: url('../static/helvetica_regular.ttf') format('truetype')
+
+@mixin paragraph-font()
+  font-size: 12pt
+
+// others
+$header-height: 75px
+$normal-border: 1px solid $dark-grey
+$thick-border: 2px solid $dark-grey
+$light-grey-border: 2px solid $lighter-grey
+$green-border: 2px solid $dark-green
+$checked-facet-border: 1px solid $light-green
+$search_container_width: 250px
+
+html
+  margin: 0
+  padding: 0
+  width: 100%
+  font-family: 'helvetica_regular', 'Arial', sans-serif
+  font-size: 12pt
+
+body
+  margin: 0
+  padding: 0
+  width: 100%
+  height: auto
+
+p
+  line-height: 1
+
+em
+  background-color: $light-green
+  font-style: normal
+
+// header
+.header
+  background-color: $dark-grey
+  height: $header-height
+  width: 100%
+  margin-top: -22px // warum ist da oben ein Abstand?
+
+.header__name--tool
+  color: $dark-green
+  font-weight: lighter
+  padding-left: $header-height
+  padding-top: 25px
+  line-height: 1
+
+.header__name--company
+  color: white
+  font-weight: lighter
+  float: right
+  margin-top: -50px
+  padding-right: $big-padding
+
+// menu
+.menu
+  width: $header-height
+  height: 100%
+  position: fixed
+  border-right: $normal-border
+  text-align: center
+
+.menu__icons
+  position: absolute
+  top: 30%
+
+.menu__icons__icon
+  height: auto
+
+.menu__icons__icon--active
+  background-color: $light-green
+
+
+.menu__icons__icon__image
+  padding: $medium-padding 0
+
+// content
+.content
+  padding-left: $header-height + $big-padding
+  padding-right: $big-padding
+  padding-top: $big-padding
+
+// content -- search
+.search_container
+  float: left
+  width: $search_container_width
+  margin-right: $big-margin
+
+.agg-container
+  padding: $small-padding
+  padding-left: 0
+  overflow: hidden
+
+.facets_container
+  padding-top: $medium-padding
+
+.search_box
+  margin-bottom: $small-margin
+
+#submit_button
+  padding: 2px
+  border: $thick-border
+  margin-left: -6px
+  margin-bottom: -10px
+
+.sub_heading
+  font-size: 15pt
+  font-weight: lighter
+  padding-bottom: $tiny-padding
+
+.inactive
+  color: lightgrey
+  display: block
+
+.refinement
+  font-weight: bold
+
+.refinement--regular_facet
+  margin-bottom: -$tiny-margin
+
+.refinement--sort_by
+  padding-right: $tiny-padding
+
+.facet_value
+  font-weight: 300
+  font-size: 11pt
+  line-height: 1.5
+
+.collapse
+  cursor: pointer
+  display: block
+
+.facet_checkbox
+  display: none /* hide the checkboxes */
+
+.collapse_container
+  display: none
+  margin-top: -$small-margin
+  margin-bottom: $medium-margin
+
+.facet_checkbox:checked + .collapse_container
+  display: block
+
+//content -- search -- history
+.stored_search
+  font-size: 10pt
+  color: $dark-grey
+  white-space: nowrap
+  text-overflow: ellipsis
+
+.saved_search-container
+  width: $search_container_width
+  overflow: hidden
+  white-space: nowrap
+  background-color: $lightest-grey
+
+.saved_search__search_history
+  padding: $small-padding
+
+// content -- search -- details
+.search_details
+  overflow: hidden
+  margin-bottom: $medium-margin
+  margin-right: $small-margin
+
+.search_details__detail
+  border: $checked-facet-border
+  //border-radius: 5px
+  width: auto
+  padding: 0 0 0 $small-padding
+  float: left
+  margin-right: $small-margin
+  margin-bottom: $tiny-margin
+
+.search_details__detail--text
+  margin: 6px 0 4px 0
+  float: left
+
+// content -- results
+.results_container
+  float: left
+  width: -webkit-calc(100% - (#{$search_container_width} + #{$medium-margin} + 2*#{$small-padding}) - 8px)
+  width:    -moz-calc(100% - (#{$search_container_width} + #{$big-margin} + 2*#{$small-padding}) - 8px)
+  width:         calc(100% - (#{$search_container_width} + #{$medium-margin} + 2*#{$small-padding}) - 8px)
+
+.results
+  border-top: $normal-border
+
+.no_results
+  padding: $medium-padding
+
+.no_results__tip
+  margin-bottom: $small-margin
+
+.results_container__header
+  overflow: hidden
+
+.results_container__header__functions
+  float: left
+
+.results_container__header__sort_results
+  float: right
+  margin-bottom: $small-margin
+
+.results__result
+  padding: 20px 0
+  margin-bottom: 5px
+  border-bottom: $normal-border
+  @include paragraph-font()
+
+.results__result__header
+  clear: both
+  overflow: hidden
+  margin-bottom: $medium-margin
+
+.result__highlights
+  margin-bottom: $small-margin
+
+.result__highlights__highlight
+  margin-right: $small-margin
+
+.link_details
+  display: none
+  line-height: 1.5
+  margin-top: $small-margin
+
+.more_link_details
+  cursor: pointer
+  overflow: hidden
+  margin-top: $small-margin
+  margin-bottom: -$medium-margin
+
+.link_details_text
+  float: left
+  margin-left: 10px
+  margin-top: 0
+  text-decoration: underline
+
+.text--less_details
+  display: none
+
+.result_count
+  padding-top: 0
+  margin-top: $tiny-margin
+
+// others
+
+.textfield
+  border: $thick-border
+  padding: $tiny-padding
+  font-size: 11pt
+  font-family: 'Helvetica', 'Arial', sans-serif
+
+
+.textfield--link_id
+  width: 35%
+  float: left
+
+.textfield--date
+  width: 75px
+  margin: -$tiny-margin 0 $small-margin 0
+
+.textfield--search_query
+  width: 208px
+
+.button
+  border-radius: 0
+  border: 0
+  padding: $tiny-padding $small-padding
+  font-size: 11pt
+  font-family: 'Helvetica', 'Arial', sans-serif
+  cursor: pointer
+
+.button--link
+  background-color: $medium-grey
+  color: white
+  float: right
+  margin-left: $small-margin
+  &:hover
+    background-color: $dark-grey
+
+.button--function
+  background-color: $light-green
+  color: white
+  &:hover
+    background-color: $medium-green
+
+.button--sort_by
+  border: $light-grey-border
+  color: $light-grey
+  background-color: $lightest-grey
+  height: 25px
+  margin-top: -$tiny-margin
+  &:hover
+    background-color: $light-green
+    border: $green-border
+    color: white
+
+.button--sort_by--active
+  background-color: $light-green
+  border: $green-border
+  color: white
+
+#button--date
+  margin-right: -$tiny-margin
+  margin-left: $tiny-margin
+
+#button--relevance
+  margin-right: $small-margin
+
+.button--reset_filter, .button--reset_search_query
+  background-color: white
+  color: $dark-grey
+  float: left
+  height: 100%
+
+.labels--sort_by
+  display: inline-block
+  position: relative
+  top: $tiny-margin
+
+.arrow
+  float: left
+
+.arrow--down
+  width: 0
+  height: 0
+  border-left: 8px solid transparent
+  border-right: 8px solid transparent
+  border-top: 8px solid $dark-grey
+  display: none
+  margin-top: $tiny-margin
+
+.visible
+  display: block
+
+.arrow--right
+  width: 0
+  height: 0
+  border-top: 8px solid transparent
+  border-bottom: 8px solid transparent
+  border-left: 8px solid $dark-grey
+
+.arrow--facet
+  float: right

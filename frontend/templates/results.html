@@ -1,0 +1,52 @@
+<div class="results">
+    <!-- resultlist -->
+    {% if hit_count > 0 %}
+        <div id="result_list">
+            {% for res in results %}
+                <div class="results__result">
+                    <div class="results__result__header">
+                        <input type="text" name="link_id" value="{{ res.UniqueLinkId }}" class="textfield textfield--link_id" readonly>
+                        <button class="button button--link">Deactivate</button>
+                        <button class="button button--link">Duplicate</button>
+                        <button class="button button--link">Create Short Url</button>
+                    </div>
+                    <div class="results__result__content">
+                        <div class="result__highlights">
+                            {% for highlight in res.meta.highlight %}
+                                <span class="result__highlights__highlight"><i>{{ highlight }}:</i>
+                                    {{ res.meta.highlight[highlight][0]|safe }}</span>
+                            {% endfor %}
+                        </div>
+
+                        Created On: <i>{{ res['CreatedOn'] }}</i> |
+                        Market: <i>{{ res['Market'] }}</i> |
+                        Brand: <i>{{ res['Brand'] }}</i> |
+                        Topic: <i>{{ res['Topic'] }}</i>
+                        {% if res['ShortUrl'] %}
+                            | <i>Short Url: </i>{{ res['ShortUrl'] }}
+                        {% endif %}
+
+                        <div class="more_link_details" id="{{ res['UniqueLinkId'] }}">
+                            <div class="arrow arrow--down" id="arrow_down_{{ res['UniqueLinkId'] }}"></div>
+                            <div class="arrow arrow--right" id="arrow_right_{{ res['UniqueLinkId'] }}"></div>
+                            <p class="link_details_text text--more_details" id="more_details_{{ res['UniqueLinkId'] }}">more details</p>
+                            <p class="link_details_text text--less_details" id="less_details_{{ res['UniqueLinkId'] }}">less details</p>
+                        </div>
+                        <div class="link_details" id="link_details_{{ res['UniqueLinkId'] }}">
+                           <span>
+                            {% for r in res %}
+                               {{ r }}: <i> {{ res[r] }} </i> |
+                           {% endfor %}
+                           </span>
+                        </div>
+                    </div>
+{#                <p>score:{{ res.meta.score }}</p>#}
+                </div>
+            {% endfor %}
+        </div>
+
+    <!-- no results page -->
+    {% else %}
+        {% include 'no_results.html' %}
+    {% endif %}
+</div>

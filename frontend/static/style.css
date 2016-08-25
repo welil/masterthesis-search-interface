@@ -1,0 +1,46 @@
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: Helvetica;
+}
+
+.agg-container {
+    width: 20%;
+    float: left;
+}
+
+.result-container {
+    width: 80%;
+    float: left;
+}
+
+.result {
+    padding: 20px;
+    margin-bottom: 5px;
+    border: 2px solid black;
+}
+
+.inactive {
+    color: lightgrey;
+    display: block;
+}
+
+input[type="checkbox"]:checked + label {
+    background: brown;
+}
+
+.collapse{
+  cursor: pointer;
+  display: block;
+}
+.facet_checkbox{
+  display: none; /* hide the checkboxes */
+}
+.collapse_container{
+  display:none;
+}
+.facet_checkbox:checked + .collapse_container{
+  display:block;
+}
+

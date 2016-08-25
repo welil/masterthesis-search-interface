@@ -1,0 +1,15 @@
+<div class="search_container">
+    <div class="search_box">
+        <input id="search_query" class="textfield textfield--search_query" type="text" name="search_query" value="{{ filters.search_query }}" title="search_box" list="completions"/>
+        <input type="image" src="{{ url_for('static', filename = 'magnifier.png') }}" height='21px' id="submit_button" border="0" alt="Submit" />
+    </div>
+    {% include 'search_facets.html' %}
+</div>
+
+<div id="auto_complete_container"></div>
+
+<div class="results_container">
+    {% include 'search_details.html' %}
+    {% include 'search_functions.html' %}
+    {% include 'results.html' %}
+</div>

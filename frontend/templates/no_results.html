@@ -1,0 +1,25 @@
+<div class="no_results">
+   <p>Your search "{{ search_query }}" did not match any links.</p>
+    {% if suggestions.__len__() > 0 %}
+        <p>Search for
+        {% for suggestion in suggestions %}
+            <a class="suggestion" href="#">{{ suggestion }}</a>,
+        {% endfor %}
+        </p>
+    {% endif %}
+    <p>Try something like</p>
+    <ul>
+        <li class="no_results__tip">
+            Using more general terms
+        </li>
+        <li class="no_results__tip">
+            Checking your spelling
+        </li>
+        <li class="no_results__tip">
+            Using less filters
+        </li>
+        <li class="no_results__tip">
+            Extend the defined time period
+        </li>
+    </ul>
+</div>

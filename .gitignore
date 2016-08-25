@@ -1,0 +1,8 @@
+*.pyc
+venv/
+venv3/
+.idea/
+
+static/.webassets-cache/
+static/webassets-external/
+

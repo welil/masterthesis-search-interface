@@ -1,0 +1,24 @@
+<div class="search_details">
+    <p class="result_count sub_heading">{{ hit_count }} results <span class="for">for</span></p>
+    <!-- display checked facets -->
+    {% set count = 0 %}
+    {% if search_query != '' %}
+        <div class="search_details__detail">
+            <p class="search_details__detail--text">Searchquery "{{ search_query }}"</p>
+            <button class="button button--reset_search_query">x</button>
+        </div>
+    {% endif %}
+    {% for facet_value in facet_values %}
+        {% for fv in facet_value %}
+             {% if filters.checkbox[facets[count]] == fv.key %}
+                 {% set f = facets[count].split('.') %}
+                 <div class="search_details__detail">
+                    <p class="search_details__detail--text">{{ f[0] }}: {{ fv.key }}</p>
+                    <button class="button button--reset_filter">x</button>
+                 </div>
+             {% endif %}
+        {% endfor %}
+        {% set count = count + 1 %}
+    {% endfor %}
+    <button id="reset_button" class="button button--function button--reset">Reset all filters</button>
+</div>

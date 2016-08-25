@@ -1,0 +1,64 @@
+<!doctype html>
+
+<head>
+    <title>LinkbuilderSearch</title>
+    {% assets "css_all" %}
+        <link href="{{ ASSET_URL }}" rel="stylesheet">
+    {% endassets %}
+    <script type=text/javascript src="{{ url_for('static', filename='jquery.js') }}"></script>
+    <script type=text/javascript src="{{ url_for('static', filename='search_state.js') }}"></script>
+    <script type=text/javascript src="{{ url_for('static', filename='functions.js') }}"></script>
+</head>
+
+<body>
+    <div class="menu">
+        <div class="menu__icons">
+            <div class="menu__icons__icon menu__icons__icon--active">
+                <a href="#"><img src="{{ url_for('static', filename = 'home.png') }}" width="50%" class="menu__icons__icon__image"/></a>
+            </div>
+             <div class="menu__icons__icon">
+                <a href="#"><img src="{{ url_for('static', filename = 'create_link.png') }}" width="40%" class="menu__icons__icon__image"/></a>
+            </div>
+             <div class="menu__icons__icon">
+                <a href="#"><img src="{{ url_for('static', filename = 'admin.png') }}" width="45%" class="menu__icons__icon__image"/></a>
+            </div>
+             <div class="menu__icons__icon">
+                <a href="#"><img src="{{ url_for('static', filename = 'help.png') }}" width="30%" class="menu__icons__icon__image"/></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="header">
+        <h1 class="header__name--tool">Linkbuilder & Shortener</h1>
+        <h2 class="header__name--company">FELD<b>M</b></h2>
+    </div>
+
+
+    <div class="content">
+
+        <div id="reload-container">
+            <div class="search_container">
+                <div class="search_box">
+                    <input id="search_query" class="textfield textfield--search_query" type="text"
+                           name="search_query" value="{{ search_query }}" title="search_box"
+                           list="completions"/>
+                    <input type="image" src="{{ url_for('static', filename = 'magnifier.png') }}"
+                           height='21px' id="submit_button" border="0" alt="Submit" />
+                </div>
+                {% include 'search_facets.html' %}
+            </div>
+
+            <div id="auto_complete_container"></div>
+
+            <div class="results_container">
+                <p class="result_count sub_heading">{{ hit_count }} results</p>
+                {% include 'search_functions.html' %}
+                {% include 'results.html' %}
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+

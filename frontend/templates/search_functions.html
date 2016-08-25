@@ -1,0 +1,11 @@
+<div class="results_container__header">
+    <div class="results_container__header__functions">
+        <button class="button button--function">Export Results</button>
+        <button class="button button--function">Save Search</button>
+    </div>
+    <div class="results_container__header__sort_results">
+        <span class="refinement refinement--sort_by labels--sort_by">Sort by</span>
+        <span class="labels--sort_by">Date </span><button id="button--date" {% if filters.sort.sort_type == 'Date' %}class="button button--sort_by button--sort_by--active"{% else %}class="button button--sort_by"{% endif %} value="Date"></button>
+        <button id="button--relevance" {% if filters.sort.sort_type == 'Relevance' %}class="button button--sort_by bu button--sort_by--active"{% else %}class="button button--sort_by"{% endif %} value="Relevance"></button><span class="labels--sort_by">Relevance</span>
+    </div>
+</div>

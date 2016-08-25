@@ -1,0 +1,38 @@
+<!-- form: searchfield and facets with checkboxes -->
+<div class="agg-container" id="agg-container" xmlns="http://www.w3.org/1999/html">
+    <p class="sub_heading">Search History</p>
+    <div id="search_history"></div>
+    <div class="facets_container">
+        <p class="sub_heading">Refine by</p>
+        <p class="refinement">Created On</p>
+        <input type="text" name="createdOn_start" value={{ created_on_start }} id="created_on_start" class="textfield textfield--date"/> -
+        <input type="text" name="createdOn_end" value={{ created_on_end }} id="created_on_end" class="textfield textfield--date"/>
+        {% set count = 0 %}
+        {% for facet_value in facet_values %}
+            {% set f = facets[count].split('.') %}
+            <div id="facet_{{ f[0] }}" class="facet">
+                <div id="arrow--facet_{{ f[0] }}" class="arrow arrow--right arrow--facet"></div>
+                <p><label {% if facet_value == [] %} class="inactive refinement refinement--regular_facet" {% else %} class="collapse refinement refinement--regular_facet" {% endif %} for="collapse_{{ f[0] }}">{{ f[0] }}</label></p>
+                <input id="collapse_{{ f[0] }}" class="facet_checkbox" type="checkbox">
+                <div class="collapse_container" id="collapse_container_{{ f[0] }}">
+                    {% for fv in facet_value %}
+                        <input type="checkbox"
+                            id="{{ fv.key }}"
+                            name="{{ fv.key }}"
+                            facet = "{{ facets[count] }}"
+                            class="es_filter es_filter_{{ fv.key }}"
+                            {% if filters.checkbox %}
+                               {% if filters.checkbox[facets[count]] == fv.key %}
+                                    checked
+                               {% endif %}
+                            {% endif %}>
+                            <label for="{{ fv.key }}" name="label" class="facet_value"> {{ fv.key }} ({{ fv.doc_count }})</label>
+                        <br/>
+                    {% endfor %}
+                </div>
+                {% set count = count + 1 %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
