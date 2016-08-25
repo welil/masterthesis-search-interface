@@ -1,3 +1,5 @@
+# masterthesis-search-interface
+
 The masterthesis-search-interface is an Elasticsearch Searchinterface for Campaign Metadata.
 It includes a faceted search for the metadata as well as an autocomplete- and a term-highlight-functionality
 to simplify search for the user.
